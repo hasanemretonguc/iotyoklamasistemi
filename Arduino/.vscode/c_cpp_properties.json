@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "E:\\tonguc\\Documents\\Arduino\\libraries\\ArduinoJson\\src",
+                "C:\\Users\\tonguc\\AppData\\Local\\Arduino15\\packages\\esp8266\\**",
+                "E:\\tonguc\\Documents\\Arduino\\libraries\\**",
+                "${workspaceFolder}/**",
+                "C:\\Users\\tonguc\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.7.0\\**",
+                "C:\\Users\\tonguc\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}

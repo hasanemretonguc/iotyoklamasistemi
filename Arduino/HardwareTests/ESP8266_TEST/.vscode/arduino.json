@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:uno",
+    "programmer": "Parallel Programmer",
+    "sketch": "esp8266.ino",
+    "port": "COM4"
+}

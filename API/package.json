@@ -1,0 +1,35 @@
+{
+  "name": "nodeatt",
+  "version": "1.0.0",
+  "description": "Attandance System API made for arduino devices",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "run": "nodemon index.js"
+  },
+  "keywords": [
+    "nodemcu",
+    "arduino",
+    "rest api",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Hasan Emre Tonguç",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "consola": "^2.11.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.9",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.6"
+  }
+}

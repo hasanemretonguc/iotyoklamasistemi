@@ -1,0 +1,6 @@
+{
+    "programmer": "AVR ISP",
+    "board": "arduino:avr:uno",
+    "sketch": "RFID_TESTER.ino",
+    "port": "COM4"
+}

@@ -1,0 +1,30 @@
+NODEMCU 'dan ARDUINO' ya PIN HARITASI
+        D0 -> 16    
+        D1 -> 5
+        D2 -> 4
+        D3 -> 0
+        D4 -> 2
+        D5 -> 14
+        D6 -> 12
+        D7 -> 13
+        D8 -> 15
+        SD3 -> 10
+        SD2 -> 9
+        VV -> portu 5v 
+        G -> Hepsi toprak
+        3V -> Hepsi 3.3V
+DEVRE
+    LCD I2C     NODEMCU
+        GND     -> G
+        VCC     -> VV(VU'da yazıyor olabilir)
+        SDA     -> D2
+        SCL     -> D1
+                CHINE RFID     
+        SDA NSS -> D4       
+        SCK     -> D5       
+        MOSI    -> D7          
+        MISO    -> D6    
+        RQ      -> BOS          
+        GND     -> G          
+        RST     -> D3        
+        3.3V    -> 3V         
