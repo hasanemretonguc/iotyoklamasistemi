@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - ATT Sistemi</title>
+    <meta property="og:image" content="assets/img/avatars/avatar5.jpeg?h=35dc45edbcda6b3fc752dab2b0f082ea">
+    <meta name="description" content="Arduino Temelli Öğrenci Yoklama Sistemi ">
+    <meta property="og:type" content="website">
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self';"> -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=47c1acf7e75e8ae207956c5c1b08fff5">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
+    <link rel="stylesheet" href="assets/css/popoutForm.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>ATT Sistemi</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><button class="nav-link btn" id="homepageBtn"><i
+                                class="fas fa-tachometer-alt"></i><span>Ana Sayfa</span></button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link btn" id="profil"><i
+                                class="fas fa-tachometer-alt"></i><span>Profil</span></button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link btn" id="personelSectionBtn"><i
+                                class="fas fa-tachometer-alt"></i><span>Öğrenci</span></button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link btn" id="userListSectionBtn"><i
+                                class="fas fa-tachometer-alt"></i><span>Kullanıcı Listesi</span></button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link btn" id="attListSectionBtn"><i
+                                class="fas fa-tachometer-alt"></i><span>Yoklama Listesi</span></button></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form
+                            class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"></div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item">
+                                <div id="loader" class="loader mr-2"></div>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <div class="nav-item"><span class="d-none d-lg-inline mr-2 text-gray-600 small"
+                                        id="username"></span>
+
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="nav-item">
+                                    <a class="fas fa-sign-out-alt fa-sm fa-fw mr-2 d-none d-lg-inline btn border-0"
+                                        id="logoutButton"> Çıkış</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <section id="homepageSection">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-left-primary py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                                                    <span>Toplam Giris</span></div>
+                                                <div class="text-dark font-weight-bold h5 mb-0"><span
+                                                        id="totalCountText">5</span></div>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-left-success py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
+                                                    <span>Bugunkı gırısler</span></div>
+                                                <div class="text-dark font-weight-bold h5 mb-0"><span
+                                                        id="todayCount"></span></div>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-id-card fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-left-info py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <div class="text-uppercase text-info font-weight-bold text-xs mb-1">
+                                                    <span>son yoklama</span></div>
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span
+                                                                id="lastUser"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto"><i
+                                                    class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-left-warning py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                                    <span>son ogrencı</span></div>
+                                                <div class="text-dark font-weight-bold h5 mb-0"><span
+                                                        id="lastPersonel"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto"><i
+                                                    class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <h3 class="text-dark mb-4"></h3>
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table dataTable my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Kullanıcı</th>
+                                                <th>Personel</th>
+                                                <th>Bölüm Adı</th>
+                                                <th>Tarih</th>
+                                                <th>Saat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="myTable">
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="personelListSection" hidden>
+                    <div class="container-fluid">
+                        <h3 class="text-dark mb-4">Öğrenci Listesi</h3>
+                        <div class="card shadow">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <button class="btn btn-primary btn-block text-white btn-user" type="submit"
+                                                onclick="addMe()"><i class="fas fa-user-plus d-lg-inline border-0"></i>
+                                                Öğrenci
+                                                Ekle</button>
+                                        </div>
+                                        <div class="col">
+
+                                        </div>
+                                        <div class="col"></div>
+                                    </div>
+
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                        aria-describedby="dataTable_info">
+                                        <table class="table dataTable my-0" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Adı Soyadı</th>
+                                                    <th>Numarası</th>
+                                                    <th>Email</th>
+                                                    <th>Kart Numarası</th>
+                                                    <th>Kayıtlı Tarih</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="personelTable">
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="userListSection" hidden>
+                    <div class="container-fluid">
+                        <h3 class="text-dark mb-4">Kullanıcıların Listesi</h3>
+                        <div class="card shadow">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-2"> <button
+                                                class="btn btn-primary btn-block text-white btn-user" type="submit"
+                                                onclick="addUser()"><i
+                                                    class="fas fa-user-plus d-lg-inline border-0"></i>
+                                                Kullanıcı
+                                                Ekle</button></div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table dataTable my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Adı Soyadı</th>
+                                                <th>Dersin Adı</th>
+                                                <th>Email</th>
+                                                <th>Kart Numarası</th>
+                                                <th>Rol</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="userTable">
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="attListSection" hidden>
+                    <div class="container-fluid">
+                        <h3 class="text-dark mb-4">Yoklama Listelerin</h3>
+                        <div class="card shadow">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <button class="btn btn-primary btn-block text-white btn-user" type="submit"
+                                                id="downloadAsExcel"><i class="far fa-file-excel"></i>
+                                                Excel Olarak İndir</button>
+                                        </div>
+                                        <div class="col"></div>
+                                    </div>
+                                </div>
+
+                                <div class="card body">
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                        aria-describedby="dataTable_info">
+                                        <table class="table dataTable my-0" id="dataTableATT">
+                                            <thead>
+                                                <tr>
+                                                    <th>Liste Adı</th>
+                                                    <th>Öğrenci</th>
+                                                    <th>Ders Adı</th>
+                                                    <th>Tarih</th>
+                                                    <th>Saat</th>
+                                                    <th>ID</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="attList">
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="hover_bkgr_fricc" id="personelEdit">
+                    <span class="helper"></span>
+                    <div>
+                        <div class="popupCloseButton" id="closePersonelEdit">&times;</div>
+
+                        <div class="container-fluid mt-2 mb-2">
+                            <h3 class="text-dark mb-1" id="personelUpdateMessage">Düzenleme</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+
+                                <label class="m-2">Kullanıcı ID: <span id="personelIDText">12098346782189</span></label>
+
+                                <div class="label-column"><label class="col-form-label" for="name-input-field">Ad
+                                        Soyad</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text" id="personelNameText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">No</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text" id="personelNoText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">Email</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="email"
+                                        id="personelEmailText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label" for="name-input-field">Kart
+                                        Numarası</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text"
+                                        id="personelCardNoText">
+                                </div>
+
+                                <button class="btn btn-light submit-button mt-4" type="button"
+                                    id="personelSaveBtn">Kaydet</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="hover_bkgr_fricc" id="personelNew">
+                    <span class="helper"></span>
+                    <div>
+                        <div class="popupCloseButton" id="closePersonelNew">&times;</div>
+
+                        <div class="container-fluid mt-2 mb-2">
+                            <h3 class="text-dark mb-1" id="personelNewMessage">Kayıt</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+
+                                <div class="label-column"><label class="col-form-label" for="name-input-field">Ad
+                                        Soyad</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text"
+                                        id="personelNewNameText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">No</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text"
+                                        id="personelNewNoText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">Email</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="email"
+                                        id="personelNewEmailText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label" for="name-input-field">Kart
+                                        Numarası</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text"
+                                        id="personelNewCardNoText">
+                                </div>
+
+                                <button class="btn btn-light submit-button mt-4" type="button"
+                                    id="personelNewBtn">Kaydet</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="hover_bkgr_fricc" id="userNew">
+                    <span class="helper"></span>
+                    <div>
+                        <div class="popupCloseButton" id="closeUserNew">&times;</div>
+
+                        <div class="container-fluid mt-2 mb-2">
+                            <h3 class="text-dark mb-1" id="userNewMessage">Kayıt</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+
+                                <div class="label-column"><label class="col-form-label" for="name-input-field">Ad
+                                        Soyad</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text" id="userNewNameText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">Sınıf</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text"
+                                        id="userNewClassNameText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">Email</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="email"
+                                        id="userNewEmailText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label" for="name-input-field">Kart
+                                        Numarası</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="text"
+                                        id="userNewCardNoText">
+                                </div>
+                                <div class="label-column"><label class="col-form-label"
+                                        for="name-input-field">Şifre</label>
+                                </div>
+                                <div class="input-column"><input class="form-control" type="password"
+                                        id="userNewPassword">
+                                </div>
+                                <div class="input-column">
+                                    <div class="label-column"><label class="col-form-label"
+                                            for="name-input-field">Rol</label>
+
+                                        <div class="input-column"><select id="userNewRole" name="cars">
+                                                <option value="admin">admin</option>
+                                                <option value="user">normal</option>
+                                                <option value="moderator">moderator</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-light submit-button mt-4" type="button"
+                                        id="userNewBtn">Kaydet</button>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <footer class="bg-white sticky-footer">
+                        <div class="container my-auto">
+                            <div class="text-center my-auto copyright"><span>Copyright © Hasan Emre Tonguç 2020</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- ESSENTIALS -->
+            <script src="assets/js/jquery.js"></script>
+            <script src="assets/js/script.min.js"></script>
+            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+            <script src="assets/js/jwt-decode.min.js"></script>
+            <script src="assets/js/jquery.easing.js"></script>
+            <script src="assets/js/exportTableLib/FileSaver.min.js"></script>
+            <script src="assets/js/exportTableLib/xlsx.core.min.js"></script>
+            <script src="assets/js/exportTableLib/tableExport.min.js"></script>
+            <!-- APP -->
+            <script src="assets/js/navbar.js"></script>
+            <script src="assets/js/userinfo.js"></script>
+            <script src="assets/js/loginCheck.js"></script>
+            <script src="assets/js/connectMe.js"></script>
+            <script src="assets/js/listsLoader.js"></script>
+            <script src="assets/js/userManager.js"></script>
+            <script src="assets/js/personelManager.js"></script>
+            <script src="assets/js/listManager.js"></script>
+            <script src="assets/js/downloadAttList.js" defer></script>
+            <script src="assets/js/logout.js"></script>
+</body>
+
+</html>

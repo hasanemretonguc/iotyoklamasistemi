@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ATT Sistemi</title>
+    <meta property="og:image" content="assets/img/avatars/avatar5.jpeg?h=35dc45edbcda6b3fc752dab2b0f082ea">
+    <meta name="description" content="Arduino Temelli Öğrenci Yoklama Sistemi ">
+    <meta property="og:type" content="website">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=47c1acf7e75e8ae207956c5c1b08fff5">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css?h=18313f04cea0e078412a028c5361bd4e">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=b84657bcb2add86317ba2d9caedb1832">
+    <link rel="stylesheet" href="assets/css/loader.css">
+</head>
+
+<body class="bg-gradient-primary">
+
+    <section id="login">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-12 col-xl-10">
+                    <div class="card shadow-lg o-hidden border-0 my-5">
+                        <div class="card-body p-0">
+                            <div class="row">
+                                <div class="col-lg-6 d-none d-lg-flex">
+                                    <div class="flex-grow-1 bg-login-image"
+                                        style="background-image: url(&quot;assets/img/dogs/image3.jpeg?h=cbc3a40dae521ddee89bf6b026abde71&quot;);">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h4 class="text-dark mb-4">Hoşgeldin!</h4>
+
+                                        </div>
+                                        <div class="user">
+                                            <div class="form-group"><input class="form-control form-control-user"
+                                                    type="email" id="inputEmail" aria-describedby="emailHelp"
+                                                    placeholder="hasan@mail.com" name="email"></div>
+                                            <div class="form-group"><input class="form-control form-control-user"
+                                                    type="password" id="inputPassword" placeholder="şifrem123"
+                                                    name="password">
+                                            </div>
+                                            <button class="btn btn-primary btn-block text-white btn-user"
+                                                id="loginButton">Giriş
+                                                Yap</button>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col"></div>
+                                                <div id="loader" class="loader" hidden></div>
+                                                <div class="col"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center"><a class="small" id="helpPassword">Şifreni mi
+                                                unuttun?</a></div>
+                                        <div class="text-center"></div>
+                                        </>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="forgotPassword" hidden>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-12 col-xl-10">
+                    <div class="card shadow-lg o-hidden border-0 my-5">
+                        <div class="card-body p-0">
+                            <div class="row">
+                                <div class="col-lg-6 d-none d-lg-flex">
+                                    <div class="flex-grow-1 bg-password-image"
+                                        style="background-image: url(&quot;assets/img/dogs/image1.jpeg?h=430aabda8f7926f94f558f54049fc6e6&quot;);">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h4 class="text-dark mb-2">Şifreni Sıfırlayalım</h4>
+                                            <p class="mb-4" id="message">Olur ya şifrenini unutursun, tarayıcı kaydetti
+                                                sanırsın
+                                                kaydetmez, sıkıntı yok mail adresini yaz şifreni sıfırlamak için sana
+                                                bir
+                                                link gönderelim.</p>
+                                        </div>
+                                        <div class="user">
+                                            <div class="form-group">
+                                                <input class="form-control form-control-user" type="email"
+                                                    id="inputHelpEmail" aria-describedby="emailHelp"
+                                                    placeholder="emre@mail.com" name="email">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control form-control-user" type="text"
+                                                    id="inputResetCode" aria-describedby="resetCode"
+                                                    placeholder="Kodunu buraya yaz!" hidden>
+                                            </div>
+                                            <button id="btnHelp" class="btn btn-primary btn-block text-white btn-user"
+                                                id="btnHelp">Kod
+                                                Gönder</button>
+                                            <button id="btnHelping"
+                                                class="btn btn-info btn-block text-white btn-user">Kod
+                                                geldi!</button>
+
+
+                                        </div>
+                                        <div class="text-center">
+                                            <hr>
+                                        </div>
+                                        <div class="text-center"><a class="small" id="loginPageBtn"
+                                                id="turnBack">Yanlışlıkla mı
+                                                geldin!
+                                                Ana Sayfaya dön!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.easing.js"></script>
+    <script src="assets/js/jwt-decode.min.js"></script>
+    <script src="assets/js/loginCheck.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+    <script src="assets/js/connectMe.js"></script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/forgotpassword.js"></script>
+    <script src="assets/js/loginPanels.js"></script>
+</body>
+
+</html>
